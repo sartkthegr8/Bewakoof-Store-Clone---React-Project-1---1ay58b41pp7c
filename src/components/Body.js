@@ -9,16 +9,16 @@ const Body =()=>{
 
     return(
       <div className="body">
-        <div className="filter">
+        {/* <div className="filter">
           <button
           className="filter-btn"
           onClick={()=>{
-            let filterList = list.filter((res) => res.ratings > 3);
-            setList(filterList);
+            // let filterList = list.filter((res) => res.ratings > 3);
+            // setList(filterList);
           }}
           >Top Rated            
           </button>
-        </div>
+        </div> */}
         <div className="search">SearchBar</div>
         <div className="cloth-container">
   
