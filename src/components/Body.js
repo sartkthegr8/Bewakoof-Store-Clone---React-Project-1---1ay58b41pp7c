@@ -13,9 +13,7 @@ const Body =()=>{
           <button
           className="filter-btn"
           onClick={()=>{
-            let filterList = list.filter(
-              (res) => res.ratings>3
-            );
+            let filterList = list.filter((res) => res.ratings > 3);
             setList(filterList);
           }}
           >Top Rated            
