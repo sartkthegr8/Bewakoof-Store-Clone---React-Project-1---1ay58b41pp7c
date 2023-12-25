@@ -1,21 +1,23 @@
-const Header = ()=> {
-    return(
-      <div className="header">
-  
+const Header = () => {
+  return (
+    <div className="bg-gray-800 text-white p-4">
+      <div className="container mx-auto flex items-center justify-between">
         <div className="logo-container">
-          <img src=" " />
+          {/* Assuming you want to display an image in your logo */}
+          <img src="your-logo-src" alt="Logo" className="h-8" />
         </div>
-  
+
         <div className="nav-items">
-          <ul>
-            <li>Home</li>
-            <li>About Us</li>
-            <li>Contact Us</li>
-            <li>Cart</li>
+          <ul className="flex space-x-4">
+            <li className="cursor-pointer">Home</li>
+            <li className="cursor-pointer">About Us</li>
+            <li className="cursor-pointer">Contact Us</li>
+            <li className="cursor-pointer">Cart</li>
           </ul>
         </div>
-  
       </div>
-    )
-  }
-  export default Header ;
+    </div>
+  );
+};
+
+export default Header;
