@@ -3,8 +3,8 @@ const Header = () => {
     <div className="bg-gray-800 text-white p-4">
       <div className="container mx-auto flex items-center justify-between">
         <div className="logo-container">
-          {/* Assuming you want to display an image in your logo */}
-          <img src="your-logo-src" alt="Logo" className="h-8" />
+          
+          <img src="https://images.bewakoof.com/web/ic-desktop-bwkf-trademark-logo.svg" alt="Logo" className="h-8" />
         </div>
 
         <div className="nav-items">
