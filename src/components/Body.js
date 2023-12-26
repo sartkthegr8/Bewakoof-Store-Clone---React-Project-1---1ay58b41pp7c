@@ -39,6 +39,10 @@ const Body = () => {
       setLoading(false);
     }
   };
+  //Shimmering 
+  // if(list.length===0){
+  //   return <h1>Loading.....</h1>
+  // }
 
   // Function to filter the list based on ratings
   const handleFilter = () => {
@@ -64,7 +68,7 @@ const Body = () => {
     setSearchTerm("");
   };
 
-  return (
+  return list.length===0 ? <h1>Loading.....</h1> : (
     <div className="body min-h-screen bg-gray-100">
       <div className="container mx-auto py-8">
         <div className="flex justify-between items-center">
