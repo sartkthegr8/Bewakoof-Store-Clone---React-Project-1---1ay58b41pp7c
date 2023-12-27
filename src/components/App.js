@@ -1,7 +1,9 @@
 import "../styles/App.css";
+import About from "./About";
 import Body from "./Body";
 import Header from "./Header";
 import Navbar from "./Navbar";
+import { createBrowserRouter,RouterProvider } from "react-router-dom";
 
 
 
@@ -16,8 +18,21 @@ function App() {
         <Body/>   
     </div>
     </>
-  )
- 
+  )   
 }
 
-export default App;
+const appRouter = createBrowserRouter([
+  {
+    path:  "/",
+    element: <App/>,
+  },
+  {
+    path: "about",
+    element: <About/>
+  }
+
+])
+
+
+
+export default appRouter;
