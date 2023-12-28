@@ -3,12 +3,13 @@ import About from "./About";
 import Body from "./Body";
 import Header from "./Header";
 import Navbar from "./Navbar";
+import Error from "./Error";
 import { createBrowserRouter,RouterProvider } from "react-router-dom";
 
 
 
 
-
+ 
 function App() {
   return (
     <>
@@ -25,6 +26,7 @@ const appRouter = createBrowserRouter([
   {
     path:  "/",
     element: <App/>,
+    errorElement:<Error/> ,
   },
   {
     path: "about",
