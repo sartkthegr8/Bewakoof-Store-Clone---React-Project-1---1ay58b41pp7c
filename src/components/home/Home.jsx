@@ -6,8 +6,8 @@ import "./Home.css";
 import { Image } from "react-bootstrap";
 import Bestsellers from "./bestSellers/Bestsellers";
 import { useNavigate } from "react-router-dom";
-import TrendingCategoriesMen from "./trendingCategories/TrendingCategoriesMen";
-import TrendingCategoriesWomen from "./trendingCategories/TrendingCategoriesWomen";
+import TrendingCategoriesMen from "./trendingCategory/TrendingCategoriesMen";
+import TrendingCategoriesWomen from "./trendingCategory/TrendingCategoriesWomen";
 const Home = ({ isSearching, setIsSearching }) => {
   // const { products, setProducts } = productsContext();
   const navigate = useNavigate();

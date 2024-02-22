@@ -14,14 +14,14 @@ import OrderHistory from "../components/pages/privatePages/orderHistory/OrderHis
 import SingleOrder from "../components/pages/privatePages/singleOrder/SingleOrder";
 import Error404 from "../components/pages/error/Error404";
 import OrderSuccess from "../components/pages/privatePages/orderSuccess/OrderSuccess";
-import CategoryProduct from "../components/pages/publicPages/categorieProducts/CategoryProduct";
+import CategoryProduct from "../components/pages/publicPages/categoryProduct/CategoryProduct";
 import Men from "../components/pages/publicPages/menProducts/Men";
-import Women from "../components/pages/publicPages/womenProducts/Women";
+import Women from "../components/pages/publicPages/womanProducts/Women";
 import WinterWear from "../components/pages/publicPages/winterWearProducts/WinterWear";
 import PlusSize from "../components/pages/publicPages/plusSizeProducts/PlusSize";
 import SearchDisplay from "../components/header/navBar/SearchDisplay";
 import NewArrivals from "../components/home/featuredProducts/NewArrivals";
-import BestsellerFeaturesCategories from "../components/home/featuredProducts/BestsellerFeaturesCategories,=";
+import BestsellerFeaturesCategories from "../components/home/featuredProducts/BestsellerFeaturesCategories";
 import Trending from "../components/home/featuredProducts/Trending";
 
 const Routers = ({ isSearching, setIsSearching }) => {
