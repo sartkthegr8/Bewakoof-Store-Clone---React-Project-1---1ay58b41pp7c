@@ -6,6 +6,7 @@ import "./Bestsellers.css";
 import { Container, Image } from "react-bootstrap";
 import Card from "../../card/Card";
 import ProductCard from "../../productcard/ProductCard";
+import SlideCarousel from "../../slidecarousel/SlideCarousel";
 
 const Bestsellers = () => {
   const [bestsellersProducts, setBestsellersProducts] = useState([]);
@@ -50,16 +51,20 @@ const Bestsellers = () => {
         ))}
       </ul> */}
       <Container className="bestsellers-container" fluid>
-      {/* <ProductCard products={bestsellersProducts}/> */}
-      {
+        {/* <ProductCard products={bestsellersProducts}/> */}
+        <SlideCarousel
+          items={bestsellersProducts.map((product) => {
+            return <Card product={product} />;
+          })}
+        />
+        {/* {
         bestsellersProducts.map((product)=>{
           return(
             <Card product={product}/>
           )
         })
-      }
+      } */}
       </Container>
-      
     </div>
   );
 };
