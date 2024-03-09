@@ -22,6 +22,7 @@ import { useAccessToken } from "../../../contextApi/AccessTokenContext";
 import { ToasterMessage } from "../../../../helper/toastHelper";
 import { useCartItems } from "../../../contextApi/CartItemsContext";
 import { Typography } from "@mui/material";
+import SizeSelector from "../../../side-components/SizeSelector";
 
 const ProductInfo = ({ productDetails }) => {
   // console.log(productDetails);
@@ -30,7 +31,7 @@ const ProductInfo = ({ productDetails }) => {
   const navigate = useNavigate();
   const [wishlisted, setWishlisted] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
-  const [size, setSize]= useState('');
+  const [size, setSize] = useState("");
   // const {fetchingWishlistProducts} = wishlistProductsContext();
 
   const [wishlistItems, setWishlistItems] = useState(null);
@@ -92,9 +93,8 @@ const ProductInfo = ({ productDetails }) => {
   // console.log(wishlistItems);
   // fetchingWishlistProducts();
   const handleAddItemToCart = async () => {
-    if(size==='')
-    {
-      ToasterMessage('info','Please select a size');
+    if (size === "") {
+      ToasterMessage("info", "Please select a size");
       return;
     }
     try {
@@ -184,10 +184,10 @@ const ProductInfo = ({ productDetails }) => {
     }
   };
 
-  const handleSizeChange = (size)=>{
+  const handleSizeChange = (size) => {
     // console.log(size);
     setSize(size);
-  }
+  };
   // console.log('accessToken', accessToken);
   // console.log("product", productDetails);
   return (
@@ -240,15 +240,12 @@ const ProductInfo = ({ productDetails }) => {
             <div>
               <h2 className="select-size-title">Select Size</h2>
             </div>
-            <div className="size-container">
-              {productDetails?.size?.map((item, i) => {
-                return (
-                  <div key={i} className="size-item" onClick={()=>handleSizeChange(item)}>
-                    {item}
-                  </div>
-                );
-              })}
-            </div>
+
+            <SizeSelector
+              sizes={productDetails?.size}
+              onSizeChange={(val) => handleSizeChange(val)}
+            />
+
             <div className="button-wrapper">
               {cartItems
                 ?.map((item) => item.product?._id)
