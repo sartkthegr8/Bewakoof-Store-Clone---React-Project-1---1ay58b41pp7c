@@ -6,7 +6,8 @@ import { Image } from "react-bootstrap";
 
 const Slider = () => {
   const images = [
-    "https://images.bewakoof.com/uploads/grid/app/ik-1x1-new--1--1699607681.jpg",
+    "https://images.bewakoof.com/uploads/grid/app/HC---1X1-pajamas---common-1711780964.png",
+    "https://images.bewakoof.com/uploads/grid/app/b-day-bash-hc-1x1-1711780966.jpg",
     "https://images.bewakoof.com/uploads/grid/app/NEW-1x1-Joggers-1699357840.jpg",
     "https://images.bewakoof.com/uploads/grid/app/NEW-1x1-OversizedSweatshirts-common-1699594711.jpg",
     "https://images.bewakoof.com/uploads/grid/app/Women-Short-Tops-1x1-Banner-1699634146.jpg",
@@ -29,7 +30,7 @@ const Slider = () => {
     {
       key: 1,
       imageSrc:
-        "https://images.bewakoof.com/uploads/grid/app/ik-1x1-new--1--1699607681.jpg",
+         "https://images.bewakoof.com/uploads/grid/app/b-day-bash-hc-1x1-1711780966.jpg",
     },
     {
       key: 2,
@@ -39,17 +40,17 @@ const Slider = () => {
     {
       key: 3,
       imageSrc:
-        "https://images.bewakoof.com/uploads/grid/app/NEW-1x1-OversizedSweatshirts-common-1699594711.jpg",
+        "https://images.bewakoof.com/uploads/grid/app/1x1-Epic-Fandom-Bundle--3--1712056865.jpg",
     },
     {
       key: 4,
       imageSrc:
-        "https://images.bewakoof.com/uploads/grid/app/Women-Short-Tops-1x1-Banner-1699634146.jpg",
+        "https://images.bewakoof.com/uploads/grid/app/HC---1X1-pajamas---common-1711780964.png",
     },
     {
       key: 5,
       imageSrc:
-        "https://images.bewakoof.com/uploads/grid/app/NEW-1x1-KnitPerfection-sweater-common-1699625976.jpg",
+        "https://images.bewakoof.com/uploads/grid/app/Step-Up-Style-JOGGERS-at-1499-1x1-Common-Banner--1--1711966203.jpg",
     },
   ];
   function Tile({ onClick }) {
