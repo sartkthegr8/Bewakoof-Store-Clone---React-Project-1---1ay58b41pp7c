@@ -20,6 +20,11 @@ const Checkout = () => {
     name: "",
     mobileNo: "",
   });
+  const [cardInfo, setCardInfo] = useState({
+    card_number: "",
+    exp_date: "",
+    cvv:"",
+  });
   const [userAddress, setUserAddress] = useState({
     street: "",
     city: "",
@@ -28,26 +33,37 @@ const Checkout = () => {
     country: "",
     addressType: "HOME",
   });
+  const isuserinfovalid = Object.values({...cardInfo,...userAddress}).every((val)=>val)
 
   const { accessToken } = useAccessToken();
   const { cartItems, setCartItems } = useCartItems();
-  const {cartItemsNumber, setCartItemsNumber}= useCartItemsNumber();
+  const { cartItemsNumber, setCartItemsNumber } = useCartItemsNumber();
   const baseURL = useBaseApi();
 
-  const handleSubmit = (event) => {
+  const [ispayment, setispayment] = useState(false);
+
+
+  const handleSubmit = (event) => { console.log(event);
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
+      // event.preventDefault();
+      // event.stopPropagation();
     }
 
     setValidated(true);
-    handleCheckout();
+    // setispayment(true);
+    handleCheckout(event);
   };
 
   const handleUserInfoChange = (e) => {
     setUserInfo({
       ...userInfo,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleCardInfoChange = (e) => {
+    setCardInfo({
+      ...cardInfo,
       [e.target.name]: e.target.value,
     });
   };
@@ -83,14 +99,14 @@ const Checkout = () => {
         }
       );
       console.log(response);
-      if(response.status === 200)
-      {
+      if (response.status === 200) {
         setOrderSuccessfull(true);
       }
     } catch (error) {
       setOrderSuccessfull(false);
-      ToasterMessage('error', error.response.message);
+      ToasterMessage("error", error.response.message);
     }
+    setispayment(false);
   };
   const removeAllCartItems = async () => {
     try {
@@ -107,7 +123,7 @@ const Checkout = () => {
       if (response.status === 200) {
         setCartItems([]);
         setCartItemsNumber(0);
-        ToasterMessage("success", 'Order created successfull');
+        ToasterMessage("success", "Order created successfull");
       }
     } catch (error) {
       ToasterMessage("error", error.message);
@@ -128,17 +144,15 @@ const Checkout = () => {
     } else if (userInfo.mobileNo.length !== 10) {
       ToasterMessage("error", "Please enter a valid mobile number");
     } else {
-      if(cartItems.length === 0)
-      {
-        ToasterMessage('error', 'No products present in cart to order')
+      if (cartItems.length === 0) {
+        ToasterMessage("error", "No products present in cart to order");
       }
       cartItems.map((item) => {
         const id = item.product._id;
         buyItems(id);
-        if(setOrderSuccessfull)
-        {
+        if (setOrderSuccessfull) {
           removeAllCartItems();
-          navigate('/account/orders/ordersucces')
+          navigate("/account/orders/ordersucces");
         }
       });
     }
@@ -147,12 +161,83 @@ const Checkout = () => {
   console.log(cartItems);
   if (!accessToken) {
     return navigate("/login");
+  } else if (ispayment) {
+    return (
+      <div className="checkout-wrapper">
+        <div className="checkout-container">
+          <h3 className="deliver-title">Payment Details</h3>
+          <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          <FloatingLabel
+              controlId="cardNumber"
+              label="Card Number"
+              className="mb-3 checkout-label"
+            >
+              <Form.Control
+                type="number"
+                placeholder="Enter Card number"
+                className="checkout-input"
+                name="card_number"
+                required
+                onChange={(e) => handleCardInfoChange(e)}
+              />
+              <Form.Control.Feedback type="invalid">
+                Please enter your Card number
+              </Form.Control.Feedback>
+            </FloatingLabel>
+
+          <FloatingLabel
+              controlId="expiryDate"
+              label="expiryDate"
+              className="mb-3 checkout-label"
+            >
+              <Form.Control
+                type="text"
+                placeholder="MM/YY"
+                className="checkout-input"
+                name="exp_date"
+                required
+                onChange={(e) => handleCardInfoChange(e)}
+              />
+              <Form.Control.Feedback type="invalid">
+                Please enter your Card Expiry date
+              </Form.Control.Feedback>
+            </FloatingLabel>
+
+          <FloatingLabel
+              controlId="cvv"
+              label="cvv"
+              className="mb-3 checkout-label"
+            >
+              <Form.Control
+                type="text"
+                placeholder="Enter CVV"
+                className="checkout-input"
+                name="cvv"
+                required
+                onChange={(e) => handleCardInfoChange(e)}
+              />
+              <Form.Control.Feedback type="invalid">
+                Please enter your cvv number
+              </Form.Control.Feedback>
+            </FloatingLabel>
+
+        
+
+
+            
+            <Button className="buy-btn" type="submit" >
+              Buy Now
+            </Button>
+          </Form>
+        </div>
+      </div>
+    );
   } else {
     return (
       <div className="checkout-wrapper">
         <div className="checkout-container">
           <h3 className="deliver-title">Delivery Address</h3>
-          <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          <Form noValidate validated={validated} >
             <FloatingLabel
               controlId="validationCustomUsername"
               label="Full Name"
@@ -303,8 +388,10 @@ const Checkout = () => {
                 <option value="Other">OTHER</option>
               </Form.Select>
             </FloatingLabel>
-            <Button className="buy-btn" type="submit" onClick={handleCheckout}>
-              Buy Now
+            <Button className="buy-btn" onClick={(e)=>{setispayment(true);
+             e.preventDefault();
+      e.stopPropagation();}} >
+              Pay now
             </Button>
           </Form>
         </div>
